@@ -1,13 +1,12 @@
 package com.tuanla.springserver.controller;
 
-import com.tuanla.springserver.entity.Product;
+import com.tuanla.springserver.entity.TblProductEntity;
 import com.tuanla.springserver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -28,8 +27,8 @@ public class ProductController implements Serializable {
     }
 
     @GetMapping(value = "product")
-    public ResponseEntity<List<Product>> getAllEm(){
-        List<Product> productList = productService.getAll();
+    public ResponseEntity<List<TblProductEntity>> getAllEm(){
+        List<TblProductEntity> productList = productService.getAll();
         if (productList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -37,8 +36,8 @@ public class ProductController implements Serializable {
     }
 
     @GetMapping(value = "product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> GetEmById(@PathVariable("id") int id) {
-        Optional<Product> employee = productService.getById(id);
+    public ResponseEntity<TblProductEntity> GetEmById(@PathVariable("id") int id) {
+        Optional<TblProductEntity> employee = productService.getById(id);
         if (!employee.isPresent()) {
             return new ResponseEntity<>(employee.get(), HttpStatus.NO_CONTENT);
         }

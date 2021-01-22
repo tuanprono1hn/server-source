@@ -1,6 +1,6 @@
 package com.tuanla.springserver.service.impl;
 
-import com.tuanla.springserver.entity.Product;
+import com.tuanla.springserver.entity.TblProductEntity;
 import com.tuanla.springserver.model.ProductRepo;
 import com.tuanla.springserver.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +20,22 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAll() {
-        return (List<Product>) productRepo.findAll();
+    public List<TblProductEntity> getAll() {
+        return (List<TblProductEntity>) productRepo.findAll();
     }
 
     @Override
-    public Optional<Product> getById(int id) {
+    public Optional<TblProductEntity> getById(int id) {
         return productRepo.findById(id);
     }
 
     @Override
-    public void create(Product amEmployee) {
+    public void create(TblProductEntity entity) {
 
     }
 
     @Override
-    public void delete(Product amEmployee) {
+    public void delete(TblProductEntity entity) {
 
     }
 }
