@@ -1,13 +1,17 @@
 package com.tuanla.springserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TBL_PRODUCT", schema = "ecommerce", catalog = "")
-public class TblProductEntity {
+public class TblProductEntity implements Serializable {
+    private static final long serialVersionUID = 1;
     private Integer idSp;
     private TblCategoryEntity idCategory;
     private Integer idGallery;
@@ -21,9 +25,42 @@ public class TblProductEntity {
     private Integer status;
     private Integer idCmt;
 
+    public TblProductEntity() {
+    }
+
+//    public TblProductEntity(TblProductEntity entity) {
+//        this.idSp = entity.idSp;
+//        this.idCategory = entity.idCategory;
+//        this.idGallery = entity.idGallery;
+//        this.idPromo = entity.idPromo;
+//        this.prodName = entity.prodName;
+//        this.prodLink = entity.prodLink;
+//        this.prodPrice = entity.prodPrice;
+//        this.prodColor = entity.prodColor;
+//        this.prodStoke = entity.prodStoke;
+//        this.prodReleasedDate = entity.prodReleasedDate;
+//        this.status = entity.status;
+//        this.idCmt = entity.idCmt;
+//    }
+//
+//    public TblProductEntity(Integer idSp, TblCategoryEntity idCategory, Integer idGallery, Integer idPromo, String prodName, String prodLink, Integer prodPrice, String prodColor, Integer prodStoke, Date prodReleasedDate, Integer status, Integer idCmt) {
+//        this.idSp = idSp;
+//        this.idCategory = idCategory;
+//        this.idGallery = idGallery;
+//        this.idPromo = idPromo;
+//        this.prodName = prodName;
+//        this.prodLink = prodLink;
+//        this.prodPrice = prodPrice;
+//        this.prodColor = prodColor;
+//        this.prodStoke = prodStoke;
+//        this.prodReleasedDate = prodReleasedDate;
+//        this.status = status;
+//        this.idCmt = idCmt;
+//    }
+
     @Id
     @Column(name = "id_sp")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdSp() {
         return idSp;
     }
@@ -114,6 +151,8 @@ public class TblProductEntity {
 
     @Basic
     @Column(name = "prod_released_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="yyyy/MM/dd HH:mm:ss", timezone = "Asia/Ho_Chi_Minh")
+//    @Temporal(TemporalType.TIMESTAMP)
     public Date getProdReleasedDate() {
         return prodReleasedDate;
     }
@@ -141,6 +180,7 @@ public class TblProductEntity {
                 Objects.equals(idCategory, that.idCategory) &&
                 Objects.equals(idGallery, that.idGallery) &&
                 Objects.equals(idPromo, that.idPromo) &&
+                Objects.equals(idCmt, that.idCmt) &&
                 Objects.equals(prodName, that.prodName) &&
                 Objects.equals(prodLink, that.prodLink) &&
                 Objects.equals(prodPrice, that.prodPrice) &&

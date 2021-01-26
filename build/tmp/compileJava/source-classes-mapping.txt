@@ -1,5 +1,7 @@
-com/tuanla/springserver/service/test.java
- com.tuanla.springserver.service.test
+com/tuanla/springserver/model/CategoryRepo.java
+ com.tuanla.springserver.model.CategoryRepo
+com/tuanla/springserver/controller/CategoryController.java
+ com.tuanla.springserver.controller.CategoryController
 com/tuanla/springserver/controller/ProductController.java
  com.tuanla.springserver.controller.ProductController
 com/tuanla/springserver/service/ProductService.java
@@ -8,11 +10,15 @@ com/tuanla/springserver/model/ProductRepo.java
  com.tuanla.springserver.model.ProductRepo
 com/tuanla/springserver/SpringServerApplication.java
  com.tuanla.springserver.SpringServerApplication
-com/tuanla/springserver/entity/TblProductEntity.java
- com.tuanla.springserver.entity.TblProductEntity
 com/tuanla/springserver/entity/TblCategoryEntity.java
  com.tuanla.springserver.entity.TblCategoryEntity
+com/tuanla/springserver/entity/TblProductEntity.java
+ com.tuanla.springserver.entity.TblProductEntity
+com/tuanla/springserver/service/impl/CategoryServiceImpl.java
+ com.tuanla.springserver.service.impl.CategoryServiceImpl
 com/tuanla/springserver/service/impl/ProductServiceImpl.java
  com.tuanla.springserver.service.impl.ProductServiceImpl
 com/tuanla/springserver/ServletInitializer.java
  com.tuanla.springserver.ServletInitializer
+com/tuanla/springserver/service/CategoryService.java
+ com.tuanla.springserver.service.CategoryService
