@@ -1,8 +1,10 @@
 package com.tuanla.springserver.controller;
 
+import com.sipios.springsearch.anotation.SearchSpec;
 import com.tuanla.springserver.entity.TblCategoryEntity;
 import com.tuanla.springserver.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -74,5 +76,10 @@ public class CategoryController implements Serializable {
         }
         service.delete(entity.get());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(value = "search")
+    public ResponseEntity<List<TblCategoryEntity>> search(@SearchSpec Specification<TblCategoryEntity> specs) {
+        return new ResponseEntity<>(service.findAll(Specification.where(specs)), HttpStatus.OK);
     }
 }

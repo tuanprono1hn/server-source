@@ -6,6 +6,7 @@ import com.tuanla.springserver.model.CategoryRepo;
 import com.tuanla.springserver.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(TblCategoryEntity entity) {
         categoryRepo.deleteById(entity.getIdCategory());
+    }
+
+    @Override
+    public List<TblCategoryEntity> findAll(Specification where) {
+        return categoryRepo.findAll(where);
     }
 }
