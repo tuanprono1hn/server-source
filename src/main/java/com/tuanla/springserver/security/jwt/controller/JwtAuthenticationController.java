@@ -1,5 +1,6 @@
 package com.tuanla.springserver.security.jwt.controller;
 
+import com.tuanla.springserver.entity.dto.UserDTO;
 import com.tuanla.springserver.security.jwt.config.JwtTokenUtil;
 import com.tuanla.springserver.security.jwt.model.JwtRequest;
 import com.tuanla.springserver.security.jwt.model.JwtResponse;
@@ -36,6 +37,11 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
     }
 
     private void authenticate(String username, String password) throws Exception {
