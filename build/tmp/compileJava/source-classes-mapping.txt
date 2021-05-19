@@ -1,7 +1,5 @@
 com/tuanla/springserver/security/jwt/controller/JwtAuthenticationController.java
  com.tuanla.springserver.security.jwt.controller.JwtAuthenticationController
-com/tuanla/springserver/security/jwt/model/JwtRequest.java
- com.tuanla.springserver.security.jwt.model.JwtRequest
 com/tuanla/springserver/security/jwt/config/WebSecurityConfig.java
  com.tuanla.springserver.security.jwt.config.WebSecurityConfig
 com/tuanla/springserver/controller/CategoryController.java
@@ -10,12 +8,6 @@ com/tuanla/springserver/service/ProductService.java
  com.tuanla.springserver.service.ProductService
 com/tuanla/springserver/model/ProductRepo.java
  com.tuanla.springserver.model.ProductRepo
-com/tuanla/springserver/service/UserService.java
- com.tuanla.springserver.service.UserService
-com/tuanla/springserver/entity/TblCategoryEntity.java
- com.tuanla.springserver.entity.TblCategoryEntity
-com/tuanla/springserver/entity/TblProductEntity.java
- com.tuanla.springserver.entity.TblProductEntity
 com/tuanla/springserver/service/impl/CategoryServiceImpl.java
  com.tuanla.springserver.service.impl.CategoryServiceImpl
 com/tuanla/springserver/service/impl/ProductServiceImpl.java
@@ -26,6 +18,24 @@ com/tuanla/springserver/ServletInitializer.java
  com.tuanla.springserver.ServletInitializer
 com/tuanla/springserver/security/jwt/config/JwtAuthenticationEntryPoint.java
  com.tuanla.springserver.security.jwt.config.JwtAuthenticationEntryPoint
+com/tuanla/springserver/util/Test.java
+ com.tuanla.springserver.util.Test
+com/tuanla/springserver/controller/ProductController.java
+ com.tuanla.springserver.controller.ProductController
+com/tuanla/springserver/security/jwt/config/JwtTokenUtil.java
+ com.tuanla.springserver.security.jwt.config.JwtTokenUtil
+com/tuanla/springserver/security/jwt/service/JwtUserDetailsService.java
+ com.tuanla.springserver.security.jwt.service.JwtUserDetailsService
+com/tuanla/springserver/model/UserRepo.java
+ com.tuanla.springserver.model.UserRepo
+com/tuanla/springserver/security/jwt/model/JwtRequest.java
+ com.tuanla.springserver.security.jwt.model.JwtRequest
+com/tuanla/springserver/service/UserService.java
+ com.tuanla.springserver.service.UserService
+com/tuanla/springserver/entity/TblCategoryEntity.java
+ com.tuanla.springserver.entity.TblCategoryEntity
+com/tuanla/springserver/entity/TblProductEntity.java
+ com.tuanla.springserver.entity.TblProductEntity
 com/tuanla/springserver/entity/dto/UserDTO.java
  com.tuanla.springserver.entity.dto.UserDTO
 com/tuanla/springserver/security/jwt/config/JwtRequestFilter.java
@@ -34,15 +44,7 @@ com/tuanla/springserver/model/CategoryRepo.java
  com.tuanla.springserver.model.CategoryRepo
 com/tuanla/springserver/entity/TblUserEntity.java
  com.tuanla.springserver.entity.TblUserEntity
-com/tuanla/springserver/controller/ProductController.java
- com.tuanla.springserver.controller.ProductController
-com/tuanla/springserver/security/jwt/config/JwtTokenUtil.java
- com.tuanla.springserver.security.jwt.config.JwtTokenUtil
 com/tuanla/springserver/SpringServerApplication.java
  com.tuanla.springserver.SpringServerApplication
-com/tuanla/springserver/security/jwt/service/JwtUserDetailsService.java
- com.tuanla.springserver.security.jwt.service.JwtUserDetailsService
 com/tuanla/springserver/service/CategoryService.java
  com.tuanla.springserver.service.CategoryService
-com/tuanla/springserver/model/UserRepo.java
- com.tuanla.springserver.model.UserRepo

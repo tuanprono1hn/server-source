@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TBL_PRODUCT", schema = "ecommerce", catalog = "")
+@Table(name = "TBL_PRODUCT")
 public class TblProductEntity implements Serializable {
     private static final long serialVersionUID = 1;
     private Integer idSp;

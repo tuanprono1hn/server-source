@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TBL_USER", schema = "ecommerce", catalog = "")
+@Table(name = "TBL_USER")
 public class TblUserEntity implements Serializable {
     private static final long serialVersionUID = 1;
     private Integer idUser;
