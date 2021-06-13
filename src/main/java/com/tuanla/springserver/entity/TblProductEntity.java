@@ -28,36 +28,6 @@ public class TblProductEntity implements Serializable {
     public TblProductEntity() {
     }
 
-//    public TblProductEntity(TblProductEntity entity) {
-//        this.idSp = entity.idSp;
-//        this.idCategory = entity.idCategory;
-//        this.idGallery = entity.idGallery;
-//        this.idPromo = entity.idPromo;
-//        this.prodName = entity.prodName;
-//        this.prodLink = entity.prodLink;
-//        this.prodPrice = entity.prodPrice;
-//        this.prodColor = entity.prodColor;
-//        this.prodStoke = entity.prodStoke;
-//        this.prodReleasedDate = entity.prodReleasedDate;
-//        this.status = entity.status;
-//        this.idCmt = entity.idCmt;
-//    }
-//
-//    public TblProductEntity(Integer idSp, TblCategoryEntity idCategory, Integer idGallery, Integer idPromo, String prodName, String prodLink, Integer prodPrice, String prodColor, Integer prodStoke, Date prodReleasedDate, Integer status, Integer idCmt) {
-//        this.idSp = idSp;
-//        this.idCategory = idCategory;
-//        this.idGallery = idGallery;
-//        this.idPromo = idPromo;
-//        this.prodName = prodName;
-//        this.prodLink = prodLink;
-//        this.prodPrice = prodPrice;
-//        this.prodColor = prodColor;
-//        this.prodStoke = prodStoke;
-//        this.prodReleasedDate = prodReleasedDate;
-//        this.status = status;
-//        this.idCmt = idCmt;
-//    }
-
     @Id
     @Column(name = "id_sp")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

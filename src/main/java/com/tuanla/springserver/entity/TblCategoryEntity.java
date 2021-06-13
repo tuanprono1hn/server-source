@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TBL_CATEGORY", schema = "ecommerce", catalog = "")
+@Table(name = "TBL_CATEGORY")
 public class TblCategoryEntity {
     private Integer idCategory;
     private String category;
