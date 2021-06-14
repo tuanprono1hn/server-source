@@ -12,6 +12,7 @@ public class TblCategoryEntity {
 
     @Id
     @Column(name = "id_category")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdCategory() {
         return idCategory;
     }
