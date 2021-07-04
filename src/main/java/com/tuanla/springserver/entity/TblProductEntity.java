@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +15,7 @@ public class TblProductEntity implements Serializable {
     private TblCategoryEntity idCategory;
     private Integer idGallery;
     private Integer idPromo;
+    private Integer idCmt;
     private String prodName;
     private String prodLink;
     private Integer prodPrice;
@@ -23,7 +23,6 @@ public class TblProductEntity implements Serializable {
     private Integer prodStoke;
     private Date prodReleasedDate;
     private Integer status;
-    private Integer idCmt;
 
     public TblProductEntity() {
     }
@@ -67,6 +66,16 @@ public class TblProductEntity implements Serializable {
 
     public void setIdPromo(Integer idPromo) {
         this.idPromo = idPromo;
+    }
+
+    @Basic
+    @Column(name = "id_cmt")
+    public Integer getIdCmt() {
+        return idCmt;
+    }
+
+    public void setIdCmt(Integer idCmt) {
+        this.idCmt = idCmt;
     }
 
     @Basic
@@ -162,16 +171,6 @@ public class TblProductEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSp, idCategory, idGallery, idPromo, prodName, prodLink, prodPrice, prodColor, prodStoke, prodReleasedDate, status);
-    }
-
-    @Basic
-    @Column(name = "id_cmt")
-    public Integer getIdCmt() {
-        return idCmt;
-    }
-
-    public void setIdCmt(Integer idCmt) {
-        this.idCmt = idCmt;
+        return Objects.hash(idSp, idCategory, idGallery, idPromo, idCmt, prodName, prodLink, prodPrice, prodColor, prodStoke, prodReleasedDate, status);
     }
 }
