@@ -1,6 +1,7 @@
 package com.tuanla.springserver.util;
 
 import com.google.gson.Gson;
+import com.tuanla.springserver.entity.other.TelegramResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.json.JSONObject;
@@ -11,12 +12,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class TelegramMessage {
-    public static void sendToTelegram(String msg) {
-        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s";
-        String apiToken = "5331971662:AAHGlrzp4mWM8IyUyEz25PJaq5Kh7TxOLGQ";
-        String chatId = "-1001867127542";
+    private static final String binanceApiUrl = "https://api.binance.com/api/v3/ticker/price";
+    private static final String telegramGroupInfo = "https://api.telegram.org/bot%s/getUpdates";
+    private static final String telegramApiUrl = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s";
+    private static final String telegramBotToken = "5331971662:AAHGlrzp4mWM8IyUyEz25PJaq5Kh7TxOLGQ";
+    private static final String telegramChatId = "-1001867127542";
 
-        urlString = String.format(urlString, apiToken, chatId, msg);
+    public static void send(String msg) {
+        String urlString = String.format(telegramApiUrl, telegramBotToken, telegramChatId, msg);
 
         try {
             URL url = new URL(urlString);
@@ -30,8 +33,7 @@ public class TelegramMessage {
     public static String doGet(String param, String username, String password, JSONObject body) throws Exception {
         String strCoin = "";
         try {
-            //URL url = new URL("https://api.binance.com/api/v3/ticker/price?symbol=" + apiUrl);
-            HttpGet httpGet = new HttpGet("https://api.binance.com/api/v3/ticker/price");
+            HttpGet httpGet = new HttpGet(binanceApiUrl);
             URI uri = new URIBuilder(httpGet.getURI())
                     .addParameter("symbol", param)
                     .build();
@@ -66,7 +68,31 @@ public class TelegramMessage {
         }
     }
 
+    private static String getGroupId(String strUrl, String token) throws Exception {
+        System.out.println("iiiiiiiiiiiiiiiiiiii");
+        TelegramResponse response = new TelegramResponse();
+        String urlString = String.format(strUrl, token);
+        System.out.println(urlString);
+
+        try {
+            URL url = new URL(urlString);
+            URLConnection conn = url.openConnection();
+            InputStream is = new BufferedInputStream(conn.getInputStream());
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            String output;
+            while ((output = br.readLine()) != null) {
+                Gson gson = new Gson();
+                response = gson.fromJson(output, TelegramResponse.class);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return response.getOk();
+    }
+
     public static void main(String[] args) throws Exception {
-        sendToTelegram(doGet("CELOUSDT", "", "", null));
+        //System.out.println(getGroupId(telegramGroupInfo, telegramBotToken));
+        send(doGet("BTCUSDT", "", "", null));
     }
 }

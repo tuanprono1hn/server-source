@@ -5,18 +5,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class MailUtil {
+    private static String host = "smtp.gmail.com";
+    private static String port = "465";
     private static String username = "tuanprono1hn@gmail.com";
     private static String appPwd = "stwnwpufafjphfwo";
     private static String toMail = "a6quocoai@gmail.com";
+    private static String imgPath = "/Users/tuanla/Desktop/Screen Shot 2023-02-13 at 3.09.47 PM.png";
+
 
     public static void main(String[] args) throws Exception {
-        ex2(toMail);
+        send(toMail, "E-mail with inline images", "ok", imgPath);
     }
 
-    public static void ex1(String toMail) {
+    public static void send(String toMail) {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -44,25 +50,17 @@ public class MailUtil {
                     + "\n\n Please do not spam my email!");
 
             Transport.send(message);
-
-            System.out.println("Done");
-
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
-    public static void ex2(String toMail) throws Exception {
+    public static void send(String toMail, String subject, String msg) throws Exception {
         Properties prop = new Properties();
-//        prop.put("mail.smtp.auth", true);
-//        prop.put("mail.smtp.starttls.enable", "true");
-//        prop.put("mail.smtp.host", "smtp.mailtrap.io");
-//        prop.put("mail.smtp.port", "25");
-//        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.host", host);
+        prop.put("mail.smtp.port", port);
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.port", port);
         prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         Session session = Session.getInstance(prop, new Authenticator() {
@@ -76,9 +74,7 @@ public class MailUtil {
         message.setFrom(new InternetAddress(username));
         message.setRecipients(
                 Message.RecipientType.TO, InternetAddress.parse(toMail));
-        message.setSubject("Mail Subject");
-
-        String msg = "This is my first email using JavaMailer";
+        message.setSubject(subject);
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
@@ -89,5 +85,26 @@ public class MailUtil {
         message.setContent(multipart);
 
         Transport.send(message);
+    }
+
+    public static void send(String toMail, String subject, String strMsg, String imgPath) throws Exception {
+        // message info
+        StringBuffer body
+                = new StringBuffer("<html>This message contains two inline images.<br>");
+        body.append("Hello world:<br>");
+        body.append("<img src=\"cid:image1\" width=\"30%\" height=\"30%\" /><br>");
+        body.append("End of message.");
+        body.append("</html>");
+
+        // inline images
+        Map<String, String> inlineImages = new HashMap<String, String>();
+        inlineImages.put("image1", imgPath);
+
+        try {
+            EmbeddedImageEmailUtil.send(host, port, username, appPwd, toMail,
+                    subject, strMsg, body.toString(), inlineImages);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
