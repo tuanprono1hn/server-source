@@ -22,7 +22,7 @@ public class MailUtil {
         send(toMail, "E-mail with inline images", "ok", imgPath);
     }
 
-    public static void send(String toMail) {
+    public static void send(String toMail) throws Exception {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -37,25 +37,20 @@ public class MailUtil {
                     }
                 });
 
-        try {
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(username));
+        message.setRecipients(
+                Message.RecipientType.TO,
+                InternetAddress.parse(toMail)
+        );
+        message.setSubject("Testing Gmail SSL");
+        message.setText("Dear Mail Crawler,"
+                + "\n\n Please do not spam my email!");
 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(toMail)
-            );
-            message.setSubject("Testing Gmail SSL");
-            message.setText("Dear Mail Crawler,"
-                    + "\n\n Please do not spam my email!");
-
-            Transport.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        Transport.send(message);
     }
 
-    public static void send(String toMail, String subject, String msg) throws Exception {
+    public static void send(String toMail, String subject, String strMsg) throws Exception {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", host);
         prop.put("mail.smtp.port", port);
@@ -77,7 +72,7 @@ public class MailUtil {
         message.setSubject(subject);
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+        mimeBodyPart.setContent(strMsg, "text/html; charset=utf-8");
 
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(mimeBodyPart);
@@ -100,11 +95,6 @@ public class MailUtil {
         Map<String, String> inlineImages = new HashMap<String, String>();
         inlineImages.put("image1", imgPath);
 
-        try {
-            EmbeddedImageEmailUtil.send(host, port, username, appPwd, toMail,
-                    subject, strMsg, body.toString(), inlineImages);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        EmbeddedImageEmailUtil.send(host, port, username, appPwd, toMail, subject, strMsg, body.toString(), inlineImages);
     }
 }

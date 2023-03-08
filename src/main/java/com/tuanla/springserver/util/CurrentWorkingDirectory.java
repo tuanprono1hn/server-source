@@ -1,17 +1,14 @@
 package com.tuanla.springserver.util;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Paths;
 
 public class CurrentWorkingDirectory {
-    public static void main(String[] args) {
-
-        printCurrentWorkingDirectory1();
-        printCurrentWorkingDirectory2();
-        printCurrentWorkingDirectory3();
-        printCurrentWorkingDirectory4();
-
+    public static void main(String[] args) throws IOException {
+        GetPropertyValues pro = new GetPropertyValues();
+        System.out.println(pro.getPropValues("app", "bi.url"));
     }
 
     // System Property

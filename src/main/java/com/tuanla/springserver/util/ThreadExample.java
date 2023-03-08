@@ -14,11 +14,7 @@ public class ThreadExample extends Thread {
 
     public static void main(String[] args) {
         ThreadExample obj = new ThreadExample(10);
-        ThreadExample obj2 = new ThreadExample(200);
-        ThreadExample obj3 = new ThreadExample(300);
         obj.start();
-        obj2.start();
-        obj3.start();
-        obj.stop();
+//        obj.stop();
     }
 }

@@ -2,6 +2,8 @@ package com.tuanla.springserver.util;
 
 import com.google.gson.Gson;
 import com.tuanla.springserver.entity.other.TelegramResponse;
+import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.json.JSONArray;
@@ -11,6 +13,8 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TelegramMessage {
     private static final String binanceApiUrl = "https://api.binance.com/api/v3/ticker/price";
@@ -59,27 +63,26 @@ public class TelegramMessage {
             while ((output = br.readLine()) != null) {
                 Gson gson = new Gson();
                 ApiExample.COIN coin = gson.fromJson(output, ApiExample.COIN.class);
-                strCoin = coin.getSymbol() + " = " + Float.valueOf(coin.getPrice()).floatValue();
+                strCoin = coin.getSymbol() + " = " + Float.valueOf(coin.getPrice());
             }
             conn.disconnect();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            return strCoin;
         }
+        return strCoin;
     }
 
     private static String getGroupId(String strUrl, String token) throws Exception {
         TelegramResponse response = new TelegramResponse();
         String urlString = String.format(strUrl, token);
         String output = null;
-        
+
         try {
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
             InputStream is = new BufferedInputStream(conn.getInputStream());
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "utf-8"));
-            
+
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) {
@@ -88,9 +91,10 @@ public class TelegramMessage {
             output = sb.toString();
             Gson gson = new Gson();
             response = gson.fromJson(output, TelegramResponse.class);
-            System.out.println(response.getResultArr().get(0).getMessage().get(0).getChat().getId());
+            System.out.println(StringUtils.stripToNull(response.getResultArr().get(0).getMessage().get(0).getChat().getId()));
+            System.out.println(StringUtils.stripToNull(output));
             br.close();
-            
+
 //            while ((output = br.readLine()) != null) {
 //                System.out.println(br.readLine());
 //                Gson gson = new Gson();
@@ -103,13 +107,21 @@ public class TelegramMessage {
             System.out.println(output);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return output;
         }
+        return output;
     }
 
     public static void main(String[] args) throws Exception {
-        getGroupId(telegramGroupInfo, telegramBotToken);
+//        getGroupId(telegramGroupInfo, telegramBotToken);
         send(doGet("BTCUSDT", "", "", null));
+        TimerTask myTask = new TimerTask() {
+            @SneakyThrows
+            @Override
+            public void run() {
+                TelegramMessage.send(doGet("CELOUSDT", "", "", null));
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(myTask,0,10000);
     }
 }
