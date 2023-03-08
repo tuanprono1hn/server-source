@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.tuanla.springserver.entity.other.TelegramResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -69,30 +70,46 @@ public class TelegramMessage {
     }
 
     private static String getGroupId(String strUrl, String token) throws Exception {
-        System.out.println("iiiiiiiiiiiiiiiiiiii");
         TelegramResponse response = new TelegramResponse();
         String urlString = String.format(strUrl, token);
-        System.out.println(urlString);
-
+        String output = null;
+        
         try {
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
             InputStream is = new BufferedInputStream(conn.getInputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            String output;
-            while ((output = br.readLine()) != null) {
-                Gson gson = new Gson();
-                response = gson.fromJson(output, TelegramResponse.class);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "utf-8"));
+            
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
             }
-        } catch (IOException e) {
+            output = sb.toString();
+            Gson gson = new Gson();
+            response = gson.fromJson(output, TelegramResponse.class);
+            System.out.println(response.getResultArr().get(0).getMessage().get(0).getChat().getId());
+            br.close();
+            
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(br.readLine());
+//                Gson gson = new Gson();
+//                response = gson.fromJson(output, TelegramResponse.class);
+//
+////                JSONObject jsonObject = new JSONObject(output);
+////                response = jsonObject.getJSONArray("message").getJSONObject(2).getJSONObject("chat").get("id").toString();
+//            }
+
+            System.out.println(output);
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            return output;
         }
-        return response.getOk();
     }
 
     public static void main(String[] args) throws Exception {
-        //System.out.println(getGroupId(telegramGroupInfo, telegramBotToken));
+        getGroupId(telegramGroupInfo, telegramBotToken);
         send(doGet("BTCUSDT", "", "", null));
     }
 }

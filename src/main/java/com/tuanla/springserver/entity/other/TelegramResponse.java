@@ -22,7 +22,7 @@ public class TelegramResponse {
     @NoArgsConstructor
     public static class Result {
         private String updateId;
-        private List<String> message;
+        private List<Message> message;
     }
 
     @Setter
@@ -38,7 +38,7 @@ public class TelegramResponse {
         private LeftChatMember leftChatMember;
         private NewChatParticipant newChatParticipant;
         private NewChatMember newChatMember;
-        private ArrayList<NewChatMember> newChatMembers;
+        private List<NewChatMember> newChatMembers;
     }
 
     @Setter

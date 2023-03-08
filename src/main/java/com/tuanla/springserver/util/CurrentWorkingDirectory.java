@@ -15,31 +15,35 @@ public class CurrentWorkingDirectory {
     }
 
     // System Property
-    private static void printCurrentWorkingDirectory1() {
+    public static String printCurrentWorkingDirectory1() {
         String userDirectory = System.getProperty("user.dir");
         System.out.println(userDirectory);
+        return userDirectory;
     }
 
     // Path, Java 7
-    private static void printCurrentWorkingDirectory2() {
+    public static String printCurrentWorkingDirectory2() {
         String userDirectory = Paths.get("")
                 .toAbsolutePath()
                 .toString();
         System.out.println(userDirectory);
+        return userDirectory;
     }
 
     // File("")
-    private static void printCurrentWorkingDirectory3() {
+    public static String printCurrentWorkingDirectory3() {
         String userDirectory = new File("").getAbsolutePath();
         System.out.println(userDirectory);
+        return userDirectory;
     }
 
     // FileSystems
-    private static void printCurrentWorkingDirectory4() {
+    public static String printCurrentWorkingDirectory4() {
         String userDirectory = FileSystems.getDefault()
                 .getPath("")
                 .toAbsolutePath()
                 .toString();
         System.out.println(userDirectory);
+        return userDirectory;
     }
 }
