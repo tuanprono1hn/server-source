@@ -42,7 +42,6 @@ public class ApiExample {
         System.out.println(newjs.toString());
 //        postWithJson(url, user, pwd, newjs.toString());
         System.out.println(okHttpPost(url, user, pwd, newjs));
-        //doPostJson("http://scn4.dmp.mds:8869/api/v2/ads/sendsms", "admin", "abc54321", newjs);
     }
 
     private static String okHttpPost(String url, String username, String password, JSONObject jbody) throws Exception {
@@ -92,8 +91,6 @@ public class ApiExample {
             }
 
             conn.disconnect();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
