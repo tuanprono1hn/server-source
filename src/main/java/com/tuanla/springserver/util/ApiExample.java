@@ -2,6 +2,7 @@ package com.tuanla.springserver.util;
 
 import com.google.gson.Gson;
 import com.squareup.okhttp.*;
+import com.tuanla.springserver.entity.other.Coin;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -86,7 +87,7 @@ public class ApiExample {
             String output;
             while ((output = br.readLine()) != null) {
                 Gson gson = new Gson();
-                COIN coin = gson.fromJson(output, COIN.class);
+                Coin coin = gson.fromJson(output, Coin.class);
                 System.out.println("COIN: " + coin.toString());
             }
 
@@ -126,8 +127,6 @@ public class ApiExample {
             }
 
             conn.disconnect();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -146,42 +145,5 @@ public class ApiExample {
         System.out.println(response.getStatusLine());
         System.out.println(response.getEntity());
         client.close();
-    }
-
-    public class COIN {
-        private String symbol;
-        private String price;
-
-        public COIN() {
-        }
-
-        public COIN(String symbol, String price) {
-            this.symbol = symbol;
-            this.price = price;
-        }
-
-        public String getSymbol() {
-            return symbol;
-        }
-
-        public void setSymbol(String symbol) {
-            this.symbol = symbol;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public void setPrice(String price) {
-            this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "COIN{" +
-                    "symbol='" + symbol + '\'' +
-                    ", price='" + price + '\'' +
-                    '}';
-        }
     }
 }

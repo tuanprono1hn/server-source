@@ -6,7 +6,6 @@ com/tuanla/springserver/util/GetPropertyValues.java
  com.tuanla.springserver.util.GetPropertyValues
 com/tuanla/springserver/util/TimeUtil.java
  com.tuanla.springserver.util.TimeUtil
- com.tuanla.springserver.util.TimeUtil$1
 com/tuanla/springserver/controller/CategoryController.java
  com.tuanla.springserver.controller.CategoryController
 com/tuanla/springserver/service/ProductService.java
@@ -85,7 +84,6 @@ com/tuanla/springserver/security/jwt/model/JwtRequest.java
  com.tuanla.springserver.security.jwt.model.JwtRequest
 com/tuanla/springserver/util/ApiExample.java
  com.tuanla.springserver.util.ApiExample
- com.tuanla.springserver.util.ApiExample$COIN
 com/tuanla/springserver/service/UserService.java
  com.tuanla.springserver.service.UserService
 com/tuanla/springserver/entity/TblCategoryEntity.java
@@ -96,6 +94,8 @@ com/tuanla/springserver/util/ClientFactory.java
  com.tuanla.springserver.util.ClientFactory
 com/tuanla/springserver/util/DateTimeUtils.java
  com.tuanla.springserver.util.DateTimeUtils
+com/tuanla/springserver/entity/other/Coin.java
+ com.tuanla.springserver.entity.other.Coin
 com/tuanla/springserver/security/jwt/config/JwtRequestFilter.java
  com.tuanla.springserver.security.jwt.config.JwtRequestFilter
 com/tuanla/springserver/util/RemoteUtils.java
