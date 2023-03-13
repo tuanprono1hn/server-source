@@ -6,33 +6,45 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.http.client.utils.DateUtils;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DateTimeUtils {
+    public static String DATE_PATTERN = "yyyy-MM-dd";
+    public static TimeZone time_zone = TimeZone.getTimeZone("Asia/Vietnam");
+
     public static Timestamp convertDateToTimestamp(Date date) {
         return new Timestamp(date.getTime());
     }
-    public static String[] DATE_PATTERN = {"yyyyMMddHHmmss", "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy", "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss"};
-    //public static String DATE_PATTERN = "yyyy-MM-dd";
 
     public static void main(String[] args) throws Exception {
-        System.out.println(DateFormatUtils.formatUTC(DateUtils.parseDate("20221212121212", DATE_PATTERN), "yyyy/MM/dd hh:mm:ss"));
-        getLunar();
+        System.out.println(DateUtils.formatDate(convertTimeZone(firstDoW(new Date())), ConstantVariable.DATE_PATTERN[4]));
+        System.out.println(convertTimeZone(firstDoW(new Date())));
+
+//        System.out.println(DateFormatUtils.formatUTC(DateUtils.parseDate("20221212121212", ConstantVariable.DATE_PATTERN), "yyyy/MM/dd hh:mm:ss"));
+//        getLunar();
 
 //        Date cr = new Date();
-//        Date someDate = DateUtils.addMonths(cr, -1);
-//        System.out.println("NOW :: " + org.apache.http.client.utils.DateUtils.formatDate(cr, DATE_PATTERN));
-//        System.out.println("SOME :: " + org.apache.http.client.utils.DateUtils.formatDate(someDate, DATE_PATTERN));
-//
-//        System.out.println("FOW :: " + org.apache.http.client.utils.DateUtils.formatDate(firstDoW(someDate), DATE_PATTERN));
-//        System.out.println("LOW :: " + org.apache.http.client.utils.DateUtils.formatDate(lastDoW(someDate), DATE_PATTERN));
-//        System.out.println("FOM :: " + org.apache.http.client.utils.DateUtils.formatDate(firstDoM(someDate), DATE_PATTERN));
-//        System.out.println("LOW :: " + org.apache.http.client.utils.DateUtils.formatDate(lastDoM(someDate), DATE_PATTERN));
+//        Date someDate = org.apache.commons.lang3.time.DateUtils.addMonths(cr, 0);
+//        System.out.println("NOW :: " + DateUtils.formatDate(cr, ConstantVariable.DATE_PATTERN[4]));
+//        System.out.println("SOME :: " + DateUtils.formatDate(someDate, ConstantVariable.DATE_PATTERN[4]));
+//        System.out.println("FOW :: " + convertTimeZone(firstDoW(someDate)));
+//        System.out.println("LOW :: " + DateUtils.formatDate(lastDoW(someDate), ConstantVariable.DATE_PATTERN[4]));
+//        System.out.println("FOM :: " + DateUtils.formatDate(firstDoM(someDate), ConstantVariable.DATE_PATTERN[4]));
+//        System.out.println("LOW :: " + DateUtils.formatDate(lastDoM(someDate), ConstantVariable.DATE_PATTERN[4]));
+    }
+
+    public static Date convertTimeZone(Date date) throws Exception {
+        SimpleDateFormat isoFormat = new SimpleDateFormat(ConstantVariable.DATE_PATTERN[4]);
+        isoFormat.setTimeZone(time_zone);
+        return isoFormat.parse(isoFormat.format(date));
     }
 
     public static Date firstDoW(Date date) throws Exception {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(time_zone);
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_WEEK, 1);
         return calendar.getTime();
@@ -40,6 +52,7 @@ public class DateTimeUtils {
 
     public static Date lastDoW(Date date) throws Exception {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(time_zone);
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_WEEK, 7);
         return calendar.getTime();
@@ -47,6 +60,7 @@ public class DateTimeUtils {
 
     public static Date firstDoM(Date date) throws Exception {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(time_zone);
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         return calendar.getTime();
@@ -54,6 +68,7 @@ public class DateTimeUtils {
 
     public static Date lastDoM(Date date) throws Exception {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(time_zone);
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DATE));
         return calendar.getTime();
