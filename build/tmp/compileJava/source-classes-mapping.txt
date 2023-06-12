@@ -1,3 +1,5 @@
+com/tuanla/springserver/util/CurrentWorkingDirectory.java
+ com.tuanla.springserver.util.CurrentWorkingDirectory
 com/tuanla/springserver/util/SmsService.java
  com.tuanla.springserver.util.SmsService
 com/tuanla/springserver/security/jwt/controller/JwtAuthenticationController.java
@@ -102,5 +104,5 @@ com/tuanla/springserver/service/CategoryService.java
  com.tuanla.springserver.service.CategoryService
 com/tuanla/springserver/util/ApiClient.java
  com.tuanla.springserver.util.ApiClient
-com/tuanla/springserver/util/CurrentWorkingDirectory.java
- com.tuanla.springserver.util.CurrentWorkingDirectory
+com/tuanla/springserver/util/DocsUtil.java
+ com.tuanla.springserver.util.DocsUtil

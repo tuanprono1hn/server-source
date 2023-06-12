@@ -15,19 +15,20 @@ public class MailUtil {
     private static String username = "tuanprono1hn@gmail.com";
     private static String appPwd = "stwnwpufafjphfwo";
     private static String toMail = "a6quocoai@gmail.com";
-    private static String imgPath = "/Users/tuanla/Desktop/Screen Shot 2023-02-13 at 3.09.47 PM.png";
+    private static String imgPath = "C:\\Users\\tuanp\\OneDrive\\Máy tính\\sc\\a.jpg";
 
 
     public static void main(String[] args) throws Exception {
+        //send("a6quocoai@gmail.com");
         send(toMail, "E-mail with inline images", "ok", imgPath);
     }
 
     public static void send(String toMail) throws Exception {
         Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.host", host);
+        prop.put("mail.smtp.port", port);
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.port", port);
         prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         Session session = Session.getInstance(prop,
