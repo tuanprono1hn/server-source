@@ -59,7 +59,7 @@ public class ApiClient {
         //System.out.println(okHttpGet("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"));
     }
 
-    private static OkHttpClient getOKClient() {
+    public static OkHttpClient getOKClient() {
         OkHttpClient client = new OkHttpClient();
         client.setConnectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
         client.setWriteTimeout(REQUEST_TIMEOUT, TimeUnit.MILLISECONDS);

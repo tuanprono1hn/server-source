@@ -20,11 +20,11 @@ public class DateTimeUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(DateUtils.formatDate(convertTimeZone(firstDoW(new Date())), ConstantVariable.DATE_PATTERN[4]));
-        System.out.println(convertTimeZone(firstDoW(new Date())));
+//        System.out.println(DateUtils.formatDate(convertTimeZone(firstDoW(new Date())), ConstantVariable.DATE_PATTERN[4]));
+//        System.out.println(convertTimeZone(firstDoW(new Date())));
 
 //        System.out.println(DateFormatUtils.formatUTC(DateUtils.parseDate("20221212121212", ConstantVariable.DATE_PATTERN), "yyyy/MM/dd hh:mm:ss"));
-//        getLunar();
+        getLunar();
 
 //        Date cr = new Date();
 //        Date someDate = org.apache.commons.lang3.time.DateUtils.addMonths(cr, 0);
