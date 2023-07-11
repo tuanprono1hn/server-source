@@ -57,10 +57,18 @@ public class StringUtils {
         return sb;
     }
 
-    public static String generateRandomString(int length) {
-        boolean useLetters = true;
-        boolean useNumbers = true;
+    public static String generateRandomString(String type, int length) {
+        boolean useLetters = false;
+        boolean useNumbers = false;
+        if (type.toLowerCase().equals("string")) {
+            useLetters = true;
+            useNumbers = false;
+        } else if (type.toLowerCase().equals("number")) {
+            useLetters = false;
+            useNumbers = true;
+        }
         String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+        System.out.println(generatedString);
         return generatedString;
     }
 

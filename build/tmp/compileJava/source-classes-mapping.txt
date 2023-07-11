@@ -44,8 +44,9 @@ com/tuanla/springserver/model/UserRepo.java
  com.tuanla.springserver.model.UserRepo
 com/tuanla/springserver/util/CurrentWorkingDirectory.java
  com.tuanla.springserver.util.CurrentWorkingDirectory
-com/tuanla/springserver/util/StringUtils.java
- com.tuanla.springserver.util.StringUtils
+com/tuanla/springserver/util/TelegramMessage.java
+ com.tuanla.springserver.util.TelegramMessage
+ com.tuanla.springserver.util.TelegramMessage$1
 com/tuanla/springserver/entity/dto/UserDTO.java
  com.tuanla.springserver.entity.dto.UserDTO
 com/tuanla/springserver/util/EmbeddedImageEmailUtil.java
@@ -95,16 +96,17 @@ com/tuanla/springserver/entity/other/Coin.java
  com.tuanla.springserver.entity.other.Coin
 com/tuanla/springserver/security/jwt/config/JwtRequestFilter.java
  com.tuanla.springserver.security.jwt.config.JwtRequestFilter
-com/tuanla/springserver/util/RemoteUtils.java
- com.tuanla.springserver.util.RemoteUtils
+com/tuanla/springserver/util/ChatGPT.java
+ com.tuanla.springserver.util.ChatGPT
 com/tuanla/springserver/model/CategoryRepo.java
  com.tuanla.springserver.model.CategoryRepo
 com/tuanla/springserver/entity/TblUserEntity.java
  com.tuanla.springserver.entity.TblUserEntity
 com/tuanla/springserver/SpringServerApplication.java
  com.tuanla.springserver.SpringServerApplication
-com/tuanla/springserver/util/TelegramMessage.java
- com.tuanla.springserver.util.TelegramMessage
- com.tuanla.springserver.util.TelegramMessage$1
-com/tuanla/springserver/util/ChatGPT.java
- com.tuanla.springserver.util.ChatGPT
+com/tuanla/springserver/util/RemoteUtils.java
+ com.tuanla.springserver.util.RemoteUtils
+com/tuanla/springserver/util/QRGenerate.java
+ com.tuanla.springserver.util.QRGenerate
+com/tuanla/springserver/util/StringUtils.java
+ com.tuanla.springserver.util.StringUtils
