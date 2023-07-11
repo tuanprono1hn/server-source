@@ -36,9 +36,9 @@ import java.util.concurrent.TimeUnit;
 
 public class ApiClient {
     //private static final Logger LOGGER = LoggerFactory.getLogger(ApiClient.class);
-    private static final int CONNECT_TIMEOUT = 11000;
-    private static final int REQUEST_TIMEOUT = 11000;
-    private static final int SOCKET_TIMEOUT = 31000;
+    private static final int CONNECT_TIMEOUT = 60000;
+    private static final int REQUEST_TIMEOUT = 60000;
+    private static final int SOCKET_TIMEOUT = 60000;
     private static final int MAX_TOTAL_CONNECTIONS = 200;
     private static final int DEFAULT_KEEP_ALIVE_TIME_MILLIS = 20 * 1000;
     private static final int CLOSE_IDLE_CONNECTION_WAIT_TIME_SECS = 30;
