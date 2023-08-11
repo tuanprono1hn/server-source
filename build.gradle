@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.documents4j:documents4j-transformer-msoffice-word:1.1.12'
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'com.google.zxing:javase:3.3.3'
+    implementation 'com.tvd12:ezyfox-bean:1.2.8'
 
     compile group: 'org.jsmpp', name: 'jsmpp', version: '2.3.4'
     compile group: 'com.sipios', name: 'spring-search', version: '0.2.0'

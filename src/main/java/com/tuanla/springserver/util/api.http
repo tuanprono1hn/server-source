@@ -6,3 +6,6 @@ GET https://api.binance.com/api/v3/ticker/price
 
 ###
 GET https://api.telegram.org/bot5331971662:AAHGlrzp4mWM8IyUyEz25PJaq5Kh7TxOLGQ/getUpdates
+
+###
+GET https://api.vietqr.io/v2/banks

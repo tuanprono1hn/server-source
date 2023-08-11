@@ -12,7 +12,7 @@ import java.io.File;
 public class QRGenerate {
     public static void main(String[] args) throws Exception {
         //saveToFile(generateEAN13BarcodeImage(StringUtils.generateRandomString("number", 12)), "image", "jpg");
-        //saveToFile(generateQRCodeImage("https://www.youtube.com/watch?v=uXYO5v3T4NA"), "qr", "png");
+        saveToFile(generateQRCodeImage("00020101021238540010A00000072701240006970407011099662288660208QRIBFTTA530370454061000005802VN62090805Hello630449F"), "qr", "png");
     }
 
     public static BitMatrix generateQRCodeImage(String qrText) throws Exception {
