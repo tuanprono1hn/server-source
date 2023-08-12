@@ -8,7 +8,7 @@ public class VietQRGenerator {
     public static void main(String[] args) {
         String bankCode = "tcb";
         String bankAccount = "9966228866";
-        String amount = "100000";
+        String amount = "200000";
         String message = "Hello";
         Map<String, String> bankIdByCode = EzyMapBuilder
                 .mapBuilder()
@@ -48,20 +48,24 @@ public class VietQRGenerator {
                 .toString();
         StringBuilder builder = new StringBuilder()
                 .append("000201")
-                .append("010212")
+                .append("010211")
                 .append(part1Builder)
                 .append(part2)
                 .append("6304");
-        String qrcodeContent = builder
-                .append(generateCheckSum(builder.toString()).toUpperCase())
-                .toString();
-        System.out.println(part12Builder);
-        System.out.println(part11Builder);
-        System.out.println(part1Builder);
+        String CRC = generateCheckSum(builder.toString()).toUpperCase();
+        String qrcodeContent = builder.append(CRC.toUpperCase()).toString();
+//        String qrcodeContent = builder
+//                .append(generateCheckSum(builder.toString()).toUpperCase())
+//                .toString();
+//        System.out.println(part12Builder);
+//        System.out.println(part11Builder);
+//        System.out.println(part1Builder);
+//
+//        System.out.println(part21Builder);
+//        System.out.println(part2);
 
-        System.out.println(part21Builder);
-        System.out.println(part2);
-
+        System.out.println(CRC);
+        System.out.println(generateCheckSum(builder.toString()).toUpperCase());
         System.out.println(qrcodeContent);
     }
 
