@@ -24,7 +24,7 @@ public class DateTimeUtils {
 //        System.out.println(convertTimeZone(firstDoW(new Date())));
 
 //        System.out.println(DateFormatUtils.formatUTC(DateUtils.parseDate("20221212121212", ConstantVariable.DATE_PATTERN), "yyyy/MM/dd hh:mm:ss"));
-        getLunar();
+        getLunar(2024, 2, 10);
 
 //        Date cr = new Date();
 //        Date someDate = org.apache.commons.lang3.time.DateUtils.addMonths(cr, 0);
@@ -74,19 +74,35 @@ public class DateTimeUtils {
         return calendar.getTime();
     }
 
-    public static ChineseCalendar getLunarDate() {
+    public static ChineseCalendar getLunarDateToday() {
         PlainDate gregorian = PlainDate.nowInSystemTime();
         ChineseCalendar cc = gregorian.transform(ChineseCalendar.axis());
         return cc;
     }
 
-    public static String getLunar() {
-        ChineseCalendar chineseCalendar = getLunarDate();
+    public static ChineseCalendar getLunarDate(int year, int month, int dayOfMonth) {
+        PlainDate gregorian = PlainDate.of(year, month, dayOfMonth);
+        ChineseCalendar cc = gregorian.transform(ChineseCalendar.axis());
+        return cc;
+    }
+
+    public static String getLunarToday() {
+        ChineseCalendar chineseCalendar = getLunarDateToday();
         String strOriginDate = chineseCalendar.toString();
         String strSubDate = strOriginDate.substring(strOriginDate.lastIndexOf("-") + 1).substring(0, 2);
         String month = chineseCalendar.getMonth().toString();
         int year = chineseCalendar.getYear().getNumber();
-        System.out.println("Lunar calendar:\t" + strSubDate + "-" + month);
-        return "Lunar calendar:\t" + strSubDate + "-" + month;
+        System.out.println("Lunar calendar:\t" + strSubDate.replaceFirst("^0+(?!$)", "") + "-" + month.replaceFirst("^0+(?!$)", ""));
+        return "Lunar calendar:\t Date " + strSubDate.replaceFirst("^0+(?!$)", "") + "- Month " + month.replaceFirst("^0+(?!$)", "");
+    }
+
+    public static String getLunar(int y, int m, int d) {
+        ChineseCalendar chineseCalendar = getLunarDate(y, m, d);
+        String strOriginDate = chineseCalendar.toString();
+        String strSubDate = strOriginDate.substring(strOriginDate.lastIndexOf("-") + 1).substring(0, 2);
+        String month = chineseCalendar.getMonth().toString();
+        int year = chineseCalendar.getYear().getNumber();
+        System.out.println("Lunar calendar:\t" + strSubDate.replaceFirst("^0+(?!$)", "") + "-" + month.replaceFirst("^0+(?!$)", ""));
+        return "Lunar calendar:\t Date " + strSubDate.replaceFirst("^0+(?!$)", "") + "- Month " + month.replaceFirst("^0+(?!$)", "");
     }
 }
